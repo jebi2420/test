@@ -1,0 +1,39 @@
+body{
+    display: flex;
+}
+.container{
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.hot-list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    color: red;
+}
+
+.cold-list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+.cold-list td{
+    color: blue;
+}
+
+.list{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+#hot-list{
+    background-color: pink;
+}
+
+#name{
+    color: red;
+}
