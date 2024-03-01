@@ -2,7 +2,7 @@
 //const myKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = [];
 
-const getHotTop = async () => {
+const getTopCoin = async () => {
   const hotUrl = new URL(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`);
   console.log("hot" + hotUrl);
   const response =  await fetch(hotUrl, {
@@ -26,7 +26,8 @@ const render = () => {
 
   for(i=0; i<hotList.length; i++){
     hotHTML += `
-    <tr class="hot-list">
+    <tr class="hot-list list">
+      <td>${hotList.indexOf(hotList[i])+1}</td>
       <td id = "name">${hotList[i]["name"]}</td>
       <td id = "symbol">${hotList[i]["symbol"]}</td>
       <td id = "24h">${
@@ -44,7 +45,8 @@ const render = () => {
 
   for(i=0; i<coldList.length; i++){
     coldHTML += `
-    <tr class="cold-list">
+    <tr class="cold-list list">
+      <td>${coldList.indexOf(coldList[i])+1}</td>
       <td id = "name">${coldList[i]["name"]}</td>
       <td id = "symbol">${coldList[i]["symbol"]}</td>
       <td id = "24h">${
