@@ -1,22 +1,29 @@
 // 가장 뜨거운 코인 top3
 //const myKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = [];
+let response;
 
 const getTopCoin = async () => {
-  const hotUrl = new URL(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`);
-  console.log("hot" + hotUrl);
-  const response =  await fetch(hotUrl, {
-    headers: {
-    'X-CMC_PRO_API_KEY': myKey,
-    },
-  })
-  console.log("response",response)
-  const coinData = await response.json();
-  console.log("coinData",coinData)
- coinList = coinData.data;
-  console.log(coinList);
-
-  render()
+  try{
+    coinList = [];
+    const hotUrl = new URL(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest`);
+    //console.log("hot" + hotUrl);
+    response =  await fetch(hotUrl, {
+      headers: {
+      'X-CMC_PRO_API_KEY': myKey,
+      },
+    })
+    console.log("response",response.status)
+    const coinData = await response.json();
+    //console.log("coinData",coinData)
+    coinList = coinData.data;
+    //console.log(coinList);
+  
+    render()
+  }catch(error){
+    console.log("error message: " + error)
+    errorRender(response.status);
+  }
 }
 
 const render = () => {
@@ -58,4 +65,18 @@ document.getElementById("cold-container").innerHTML = coldHTML;
 
 }
 }
-getHotTop();
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div>
+오류가 발생했습니다. 
+나중에 다시 시도해주세요.${errorMessage} 
+  </div>`;
+
+  const containers = document.querySelectorAll(".container");
+
+  containers.forEach(container => {
+    container.innerHTML = errorHTML;
+  });
+}
+
+getTopCoin();
