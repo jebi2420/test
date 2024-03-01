@@ -1,5 +1,5 @@
 // 가장 뜨거운 코인 top3
-const myKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
+//const myKey = "f3ca5cbf-842e-439f-829e-45f6a648fca2";
 let coinList = [];
 
 const getHotTop = async () => {
@@ -26,11 +26,13 @@ const render = () => {
 
   for(i=0; i<hotList.length; i++){
     hotHTML += `
-    <td id = "name">${hotList[i]["name"]}</td>
-    <td id = "symbol">${hotList[i]["symbol"]}</td>
-    <td id = "24h">${
-      hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-    }</td>
+    <tr class="hot-list">
+      <td id = "name">${hotList[i]["name"]}</td>
+      <td id = "symbol">${hotList[i]["symbol"]}</td>
+      <td id = "24h">${
+        hotList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+      }</td>
+    </tr>
     `
   }
 
@@ -42,11 +44,13 @@ const render = () => {
 
   for(i=0; i<coldList.length; i++){
     coldHTML += `
-    <td id = "name">${coldList[i]["name"]}</td>
-    <td id = "symbol">${coldList[i]["symbol"]}</td>
-    <td id = "24h">${
-      coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
-    }</td>
+    <tr class="cold-list">
+      <td id = "name">${coldList[i]["name"]}</td>
+      <td id = "symbol">${coldList[i]["symbol"]}</td>
+      <td id = "24h">${
+        coldList[i]["quote"].USD["percent_change_24h"].toFixed(2) + "%"
+      }</td>
+    </tr>
     `
 document.getElementById("cold-container").innerHTML = coldHTML;
 
