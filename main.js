@@ -107,7 +107,12 @@ const topCoinRender = () => {
       <div class="coin-left">
         <div class="coin-rank">${coldList.indexOf(coldList[i]) + 1}</div>
         <div class="coin-names">
-          <div class="coin-name">${coldList[i]["name"]}</div>
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${coldList[i]["id"]}.png'>
+            </img>
+            <span>${coldList[i]["name"]}</span>
+          </div>
           <div class="coin-symbol">${coldList[i]["symbol"]}</div>
         </div>
       </div>

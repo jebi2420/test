@@ -29,3 +29,10 @@ body{
     display: flex;
     justify-content: space-around;
 }
+
+.coin-img-size {
+    height: 24px;
+    width: 24px;
+    border-radius: 12px;
+    margin-right: 5px;
+  }
