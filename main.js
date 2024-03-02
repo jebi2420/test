@@ -70,8 +70,9 @@ const getTopCoin = async () => {
 // 가장 뜨거운 코인, 가장 차가운 코인 top3
 const topCoinRender = () => {
   // hot top3
-  const hotList = coinList.slice(0, 3);
-  console.log("hotList: " + hotList);
+  const hotList = coinList
+  .sort((a, b) => b.quote.USD.percent_change_24h - a.quote.USD.percent_change_24h)
+  .slice(0, 3);
   let hotHTML = "";
 
   for (i = 0; i < hotList.length; i++) {
@@ -91,8 +92,9 @@ const topCoinRender = () => {
   document.getElementById("hot-container").innerHTML = hotHTML;
 
   // cold top3
-  const coldList = coinList.slice(-3);
-  console.log("coldList: " + coldList);
+  const coldList = coinList
+  .sort((a, b) => a.quote.USD.percent_change_24h - b.quote.USD.percent_change_24h)
+  .slice(0, 3);
   let coldHTML = "";
 
   for (i = 0; i < coldList.length; i++) {
