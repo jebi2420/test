@@ -80,7 +80,12 @@ const topCoinRender = () => {
       <div class="coin-left">
         <div class="coin-rank">${hotList.indexOf(hotList[i]) + 1}</div>
         <div class="coin-names">
-          <div class="coin-name">${hotList[i]["name"]}</div>
+          <div class="coin-name">
+            <img class="coin-img-size" 
+            src='https://s2.coinmarketcap.com/static/img/coins/64x64/${hotList[i]["id"]}.png'>
+            </img>
+            <span>${hotList[i]["name"]}</span>
+          </div>
           <div class="coin-symbol">${hotList[i]["symbol"]}</div>
         </div>
       </div>
